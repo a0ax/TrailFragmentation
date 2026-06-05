@@ -1,0 +1,9 @@
+{
+  "name": "trail-fragmentation-research",
+  "version": "1.0.0",
+  "description": "Research project on trail-induced fragmentation",
+  "main": "src/javascript/process_tracks.js",
+  "dependencies": {
+    "fastgeotoolkit": "^1.0.0"
+  }
+}
