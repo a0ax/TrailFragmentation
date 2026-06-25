@@ -97,8 +97,8 @@ def process_csv_to_gpx(csv_path, output_dir='data/raw'):
         reader = csv.reader(f, delimiter=delimiter)
         header = next(reader)  # Skip header row
         
-        print(f"📋 CSV Header: {header}")
-        print(f"🔍 Detected delimiter: '{delimiter}'")
+        print(f" CSV Header: {header}")
+        print(f" Detected delimiter: '{delimiter}'")
         
         track_count = 0
         total_points = 0
@@ -113,14 +113,14 @@ def process_csv_to_gpx(csv_path, output_dir='data/raw'):
                     break
             
             if not gpx_content:
-                print(f"⚠️  Row {row_idx}: No GPX data found, skipping")
+                print(f"️  Row {row_idx}: No GPX data found, skipping")
                 continue
             
             # Extract points
             points = extract_gpx_from_cell(gpx_content)
             
             if not points:
-                print(f"⚠️  Row {row_idx}: No valid trackpoints found")
+                print(f"️  Row {row_idx}: No valid trackpoints found")
                 continue
             
             # Parse points with elevation and time if available
@@ -160,9 +160,9 @@ def process_csv_to_gpx(csv_path, output_dir='data/raw'):
                 
                 track_count += 1
                 total_points += len(parsed_points)
-                print(f"✅ Saved: {filename} ({len(parsed_points)} points)")
+                print(f" Saved: {filename} ({len(parsed_points)} points)")
     
-    print(f"\n📊 Conversion complete!")
+    print(f"\n Conversion complete!")
     print(f"   - Tracks processed: {track_count}")
     print(f"   - Total points: {total_points}")
     print(f"   - Output directory: {output_dir}")
@@ -207,7 +207,7 @@ def combine_gpx_files(input_dir='data/raw', output_file='data/raw/combined.gpx')
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(combined)
     
-    print(f"✅ Combined GPX saved to: {output_file}")
+    print(f" Combined GPX saved to: {output_file}")
 
 if __name__ == "__main__":
     import sys
@@ -219,7 +219,7 @@ if __name__ == "__main__":
     
     csv_path = sys.argv[1]
     if not os.path.exists(csv_path):
-        print(f"❌ File not found: {csv_path}")
+        print(f" File not found: {csv_path}")
         sys.exit(1)
     
     # Convert
