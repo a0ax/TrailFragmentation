@@ -9,6 +9,7 @@ import subprocess
 import os
 import glob
 from pathlib import Path
+import requests
 
 class TrailFragmentationAnalyzer:
     """
@@ -43,8 +44,8 @@ class TrailFragmentationAnalyzer:
             self.crs = "EPSG:3857"
         
         self.total_area = self.protected_area.geometry.area.sum()
-        print(f" Total protected area: {self.total_area / 1e6:.2f} km²")
-        print(f"   (using {len(self.protected_area)} polygon features)")
+        print(f"Total protected area: {self.total_area / 1e6:.2f} km²")
+        print(f"(using {len(self.protected_area)} polygon features)")
     
     def _load_protected_areas(self, input_path):
         """Load one or multiple shapefiles and union them into a single GeoDataFrame."""
@@ -55,7 +56,7 @@ class TrailFragmentationAnalyzer:
                 shp_files = glob.glob(os.path.join(input_path, "*.shp"))
                 if not shp_files:
                     raise FileNotFoundError(f"No .shp files found in directory: {input_path}")
-                print(f" Found {len(shp_files)} shapefiles in directory")
+                print(f"Found {len(shp_files)} shapefiles in directory")
                 gdfs = []
                 for shp in shp_files:
                     gdf = gpd.read_file(shp)
@@ -209,4 +210,4 @@ class TrailFragmentationAnalyzer:
         )
         with open(os.path.join(output_dir, 'analysis_results.json'), 'w') as f:
             json.dump(results, f, indent=2)
-        print(f" Results exported to {output_dir}")
+        print(f"Results exported to {output_dir}")

@@ -32,13 +32,13 @@ def main():
     if os.path.isdir(protected_input):
         shp_files = glob.glob(os.path.join(protected_input, "*.shp"))
         if not shp_files:
-            print(f" No shapefiles found in directory: {protected_input}")
+            print(f"No shapefiles found in directory: {protected_input}")
             return
-        print(f" Found {len(shp_files)} shapefiles in {protected_input}")
+        print(f"Found {len(shp_files)} shapefiles in {protected_input}")
     elif os.path.isfile(protected_input):
-        print(f" Using single shapefile: {protected_input}")
+        print(f"Using single shapefile: {protected_input}")
     else:
-        print(f" Protected area input not found: {protected_input}")
+        print(f"Protected area input not found: {protected_input}")
         return
 
     # Initialize analyzer (it will handle both cases)
@@ -65,10 +65,10 @@ def main():
     print("\n Analysis complete! Check the outputs/ directory.")
     print("\n KEY FINDINGS:")
     frag = results['fragmentation']
-    print(f"   Fragmentation Index: {frag['fragmentation_percent']:.2f}%")
-    print(f"   Affected Area: {frag['affected_area_km2']:.2f} km²")
-    print(f"   Trail Density: {frag['trail_density_km_per_km2']:.2f} km/km²")
-    print(f"   Core Habitat Remaining: {frag['core_habitat_percent']:.1f}%")
+    print(f"Fragmentation Index: {frag['fragmentation_percent']:.2f}%")
+    print(f"Affected Area: {frag['affected_area_km2']:.2f} km²")
+    print(f"Trail Density: {frag['trail_density_km_per_km2']:.2f} km/km²")
+    print(f"Core Habitat Remaining: {frag['core_habitat_percent']:.1f}%")
 
 if __name__ == "__main__":
     main()
